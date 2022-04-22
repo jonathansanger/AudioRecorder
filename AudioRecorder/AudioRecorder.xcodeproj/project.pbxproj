@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC6880462811E4C0009746B9 /* AudioItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6880452811E4C0009746B9 /* AudioItemView.swift */; };
 		EC7A5FE5281108C000267AE9 /* AudioRecorderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A5FE4281108C000267AE9 /* AudioRecorderApp.swift */; };
 		EC7A5FE7281108C000267AE9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A5FE6281108C000267AE9 /* ContentView.swift */; };
 		EC7A5FE9281108C100267AE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC7A5FE8281108C100267AE9 /* Assets.xcassets */; };
@@ -14,6 +15,14 @@
 		EC7A5FF6281108C100267AE9 /* AudioRecorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A5FF5281108C100267AE9 /* AudioRecorderTests.swift */; };
 		EC7A6000281108C100267AE9 /* AudioRecorderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A5FFF281108C100267AE9 /* AudioRecorderUITests.swift */; };
 		EC7A6002281108C100267AE9 /* AudioRecorderUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A6001281108C100267AE9 /* AudioRecorderUITestsLaunchTests.swift */; };
+		EC7A60102811094700267AE9 /* RecorderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A600F2811094700267AE9 /* RecorderViewModel.swift */; };
+		EC7A601228110AD300267AE9 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A601128110AD300267AE9 /* RecordButton.swift */; };
+		EC7A601428110EDF00267AE9 /* RecorderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A601328110EDF00267AE9 /* RecorderHelper.swift */; };
+		EC7A60162811C0B200267AE9 /* NamingModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A60152811C0B200267AE9 /* NamingModal.swift */; };
+		EC7A60182811C33000267AE9 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A60172811C33000267AE9 /* RecordView.swift */; };
+		ECD183FA281350DB004C5F19 /* AudioCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD183F9281350DB004C5F19 /* AudioCollection.swift */; };
+		ECD18400281352C2004C5F19 /* AudioItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD183FF281352C2004C5F19 /* AudioItem.swift */; };
+		ECD1840228135C20004C5F19 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD1840128135C20004C5F19 /* AudioPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EC6880452811E4C0009746B9 /* AudioItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioItemView.swift; sourceTree = "<group>"; };
 		EC7A5FE1281108C000267AE9 /* AudioRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7A5FE4281108C000267AE9 /* AudioRecorderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderApp.swift; sourceTree = "<group>"; };
 		EC7A5FE6281108C000267AE9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +54,14 @@
 		EC7A5FFB281108C100267AE9 /* AudioRecorderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudioRecorderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7A5FFF281108C100267AE9 /* AudioRecorderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderUITests.swift; sourceTree = "<group>"; };
 		EC7A6001281108C100267AE9 /* AudioRecorderUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EC7A600F2811094700267AE9 /* RecorderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderViewModel.swift; sourceTree = "<group>"; };
+		EC7A601128110AD300267AE9 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
+		EC7A601328110EDF00267AE9 /* RecorderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderHelper.swift; sourceTree = "<group>"; };
+		EC7A60152811C0B200267AE9 /* NamingModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamingModal.swift; sourceTree = "<group>"; };
+		EC7A60172811C33000267AE9 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		ECD183F9281350DB004C5F19 /* AudioCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCollection.swift; sourceTree = "<group>"; };
+		ECD183FF281352C2004C5F19 /* AudioItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioItem.swift; sourceTree = "<group>"; };
+		ECD1840128135C20004C5F19 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +114,7 @@
 			children = (
 				EC7A5FE4281108C000267AE9 /* AudioRecorderApp.swift */,
 				EC7A5FE6281108C000267AE9 /* ContentView.swift */,
+				EC7A600E2811093900267AE9 /* Recorder */,
 				EC7A5FE8281108C100267AE9 /* Assets.xcassets */,
 				EC7A5FEA281108C100267AE9 /* Preview Content */,
 			);
@@ -125,6 +144,54 @@
 				EC7A6001281108C100267AE9 /* AudioRecorderUITestsLaunchTests.swift */,
 			);
 			path = AudioRecorderUITests;
+			sourceTree = "<group>";
+		};
+		EC7A600E2811093900267AE9 /* Recorder */ = {
+			isa = PBXGroup;
+			children = (
+				ECD183FB28135288004C5F19 /* Models */,
+				ECD183FE281352AD004C5F19 /* Service */,
+				ECD183FC28135294004C5F19 /* Views */,
+				ECD183FD28135298004C5F19 /* ViewModel */,
+			);
+			path = Recorder;
+			sourceTree = "<group>";
+		};
+		ECD183FB28135288004C5F19 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ECD183F9281350DB004C5F19 /* AudioCollection.swift */,
+				ECD183FF281352C2004C5F19 /* AudioItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ECD183FC28135294004C5F19 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EC6880452811E4C0009746B9 /* AudioItemView.swift */,
+				EC7A60152811C0B200267AE9 /* NamingModal.swift */,
+				EC7A60172811C33000267AE9 /* RecordView.swift */,
+				EC7A601128110AD300267AE9 /* RecordButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ECD183FD28135298004C5F19 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EC7A600F2811094700267AE9 /* RecorderViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		ECD183FE281352AD004C5F19 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EC7A601328110EDF00267AE9 /* RecorderHelper.swift */,
+				ECD1840128135C20004C5F19 /* AudioPlayer.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +324,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC7A601228110AD300267AE9 /* RecordButton.swift in Sources */,
+				EC7A60102811094700267AE9 /* RecorderViewModel.swift in Sources */,
+				ECD1840228135C20004C5F19 /* AudioPlayer.swift in Sources */,
+				EC6880462811E4C0009746B9 /* AudioItemView.swift in Sources */,
+				EC7A601428110EDF00267AE9 /* RecorderHelper.swift in Sources */,
+				EC7A60182811C33000267AE9 /* RecordView.swift in Sources */,
 				EC7A5FE7281108C000267AE9 /* ContentView.swift in Sources */,
+				ECD183FA281350DB004C5F19 /* AudioCollection.swift in Sources */,
 				EC7A5FE5281108C000267AE9 /* AudioRecorderApp.swift in Sources */,
+				EC7A60162811C0B200267AE9 /* NamingModal.swift in Sources */,
+				ECD18400281352C2004C5F19 /* AudioItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,8 +493,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AudioRecorder/Preview Content\"";
+				DEVELOPMENT_TEAM = 3Q8KT6FRL4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -429,7 +507,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sangerbits.AudioRecorder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sangerbits.AudioRecorder123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -445,8 +523,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AudioRecorder/Preview Content\"";
+				DEVELOPMENT_TEAM = 3Q8KT6FRL4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -457,7 +537,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.sangerbits.AudioRecorder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sangerbits.AudioRecorder123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
