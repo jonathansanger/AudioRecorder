@@ -175,8 +175,8 @@
 			children = (
 				EC6880452811E4C0009746B9 /* AudioItemView.swift */,
 				EC7A60152811C0B200267AE9 /* NamingModal.swift */,
-				EC7A60172811C33000267AE9 /* RecordView.swift */,
 				EC7A601128110AD300267AE9 /* RecordButton.swift */,
+				EC7A60172811C33000267AE9 /* RecordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,10 +192,10 @@
 		ECD183FE281352AD004C5F19 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				EC7A601328110EDF00267AE9 /* RecorderHelper.swift */,
 				ECD18403281386A5004C5F19 /* AlertController.swift */,
-				ECD1840728146295004C5F19 /* AudioRecordingRepository.swift */,
 				ECD1840128135C20004C5F19 /* AudioPlayer.swift */,
+				ECD1840728146295004C5F19 /* AudioRecordingRepository.swift */,
+				EC7A601328110EDF00267AE9 /* RecorderHelper.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";

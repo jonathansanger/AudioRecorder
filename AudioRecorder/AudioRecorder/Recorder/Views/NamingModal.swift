@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct NamingModal: View {
-	@State var text: String = ""
-	@FocusState var textfieldIsFocused: Bool
 	var viewModel: RecorderViewModel
 	let activeRecording: AudioItem
+	@State var text: String
+	@FocusState var textfieldIsFocused: Bool
 	
 	init(viewModel: RecorderViewModel, activeRecording: AudioItem) {
 		self.viewModel = viewModel
@@ -42,7 +42,7 @@ struct NamingModal: View {
 				.background(Color.gray.cornerRadius(8).opacity(0.2))
 			VStack {
 				button(buttonText: "Save", textColor: .white, backgroundColor: .blue, action: {
-					self.viewModel.saveNewRecording(id: activeRecording.id, name: text)
+					self.viewModel.saveNewRecording(name: text)
 				})
 				button(buttonText: "Discard file", textColor: .red, action: {
 					self.viewModel.shouldRequestFileName = false

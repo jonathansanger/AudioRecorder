@@ -108,7 +108,7 @@ class RecorderViewModel: ObservableObject {
 		recorder.stop()
 	}
 	
-	func saveNewRecording(id: String, name: String) {
+	func saveNewRecording(name: String) {
 		guard let activeRecording = activeRecording else {
 			return
 		}

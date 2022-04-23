@@ -25,7 +25,6 @@ class RecorderHelper: NSObject, AVAudioRecorderDelegate {
 			try audioSession.setCategory(.playAndRecord)
 			try audioSession.setActive(true)
 			let avAudioRecorder: AVAudioRecorder = try AVAudioRecorder(url: url, settings: settings)
-			//Make a weak self? Throwing a warning error in the console when recording/stopping
 			avAudioRecorder.delegate = self
 			self.avAudioRecoder = avAudioRecorder
 		}

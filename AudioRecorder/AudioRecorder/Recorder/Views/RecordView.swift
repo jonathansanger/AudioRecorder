@@ -54,8 +54,7 @@ struct RecordView: View {
 	}
 	
 	var body: some View {
-		Self._printChanges()
-		return ZStack {
+		ZStack {
 			VStack {
 				//Audio items list
 				if viewModel.recordingListToDisplay.isEmpty {
@@ -74,7 +73,7 @@ struct RecordView: View {
 						VStack {
 							ForEach(viewModel.recordingListToDisplay, id: \.id) { audioItem in
 								AudioItemView(audioItem: audioItem,
-											  deleteFile: { id in viewModel.deleteFile(id: id)},
+											  deleteFile: { viewModel.deleteFile(id: audioItem.id)},
 											  startPlaying: { startPlayingAudio(audioItem)},
 											  stopPlaying: { stopPlayingAudio(audioItem)},
 											  isPlaying: audioItem.id == activeAudioId

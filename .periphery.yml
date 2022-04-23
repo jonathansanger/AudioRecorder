@@ -1,0 +1,6 @@
+project: AudioRecorder/AudioRecorder.xcodeproj
+retain_public: true
+schemes:
+- AudioRecorder
+targets:
+- AudioRecorder

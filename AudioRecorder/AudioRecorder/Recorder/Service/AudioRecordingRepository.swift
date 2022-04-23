@@ -29,12 +29,6 @@ class AudioRecordingRepository: ObservableObject {
 		}
 	}
 	
-	func updateFilename(id: String, name: String) {
-		self.audioCollection.updateAudioName(id: id, fileName: name)
-		//Overwrite UserDefaults with updated data set
-		self.localDataSource.saveRecordings(audioItems: self.audioCollection.audioItems)
-	}
-	
 	func saveRecording(audioItem: AudioItem) {
 		self.audioCollection.addAudioItem(audioItem)
 		self.localDataSource.saveRecordings(audioItems: self.audioCollection.audioItems)
@@ -46,11 +40,6 @@ class AudioRecordingRepository: ObservableObject {
 			//Overwrite UserDefaults with updated data set
 			self.localDataSource.saveRecordings(audioItems: self.audioCollection.audioItems)
 		}
-	}
-	
-	func deleteAll() {
-		self.audioCollection.deleteAll()
-		self.localDataSource.deleteLocalRecordings()
 	}
 	
 	static func getDocDirectory() -> URL {
@@ -89,19 +78,6 @@ class AudioRecordingRepository: ObservableObject {
 				audioCollectionDict[audioItem.id] = itemDict
 			}
 			UserDefaults.standard.set(audioCollectionDict, forKey: kAudioItemsArrayKey)
-		}
-		
-		func deleteLocalRecordings() {
-			UserDefaults.standard.set([:], forKey: kAudioItemsArrayKey)
-			let url = AudioRecordingRepository.getDocDirectory()
-			guard let existingFiles = try? FileManager.default.contentsOfDirectory(atPath: url.path) else {
-				return
-			}
-
-			for audioUrlString in existingFiles {
-				let filepath = url.path.appending("/\(audioUrlString)")
-				try? FileManager.default.removeItem(atPath: filepath)
-			}
 		}
 	}
 }

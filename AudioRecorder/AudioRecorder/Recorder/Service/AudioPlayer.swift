@@ -19,13 +19,6 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
 		self.avAudioPlayer?.delegate = self
 	}
 	
-	var isPlaying: Bool {
-		if let avAudioPlayer = avAudioPlayer {
-			return avAudioPlayer.isPlaying
-		}
-		return false
-	}
-	
 	func stop() {
 		self.avAudioPlayer?.stop()
 	}
@@ -38,5 +31,4 @@ class AudioPlayer: NSObject, AVAudioPlayerDelegate {
 	func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
 		self.didFinishPlaying()
 	}
-	
 }

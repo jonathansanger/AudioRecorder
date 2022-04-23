@@ -16,15 +16,6 @@ struct RecordButton: View {
 		return "Record"
 	}
 	
-	func tapButton() {
-		if viewModel.isRecording {
-			viewModel.stopRecording()
-		}
-		else {
-			viewModel.attemptStartRecording()
-		}
-	}
-	
 	var body: some View {
 		let tap = DragGesture(minimumDistance: 0)
 			.updating($isPressedDown) { ( _, isPressedDown, _) in

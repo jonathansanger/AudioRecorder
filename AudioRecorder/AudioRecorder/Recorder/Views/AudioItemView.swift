@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AudioItemView: View {
 	var audioItem: AudioItem
-	var deleteFile: (String) -> Void
+	var deleteFile: () -> Void
 	var startPlaying: () -> Void
 	var stopPlaying: () -> Void
 	var isPlaying: Bool
@@ -50,7 +50,7 @@ struct AudioItemView: View {
 			
 			Spacer()
 			Button(action: {
-				self.deleteFile(audioItem.id)
+				self.deleteFile()
 			}) {
 				Image(systemName: "trash.fill")
 					.resizable().scaledToFit()
@@ -65,6 +65,6 @@ struct AudioItemView: View {
 
 struct AudioItemView_Previews: PreviewProvider {
 	static var previews: some View {
-		AudioItemView(audioItem: AudioItem.mock, deleteFile: {_ in}, startPlaying: {}, stopPlaying: {}, isPlaying: false)
+		AudioItemView(audioItem: AudioItem.mock, deleteFile: {}, startPlaying: {}, stopPlaying: {}, isPlaying: false)
 	}
 }
