@@ -22,6 +22,7 @@ struct RecordView: View {
 	}
 	
 	func resetAudioPlayer() {
+		audioPlayer?.stop()
 		audioPlayer = nil
 		activeAudioId = nil
 	}
@@ -32,7 +33,8 @@ struct RecordView: View {
 		try? audioSession.setCategory(.playback)
 		try? audioSession.setActive(true)
 		self.activeAudioId = audioItem.id
-		self.audioPlayer = AudioPlayer(url: audioItem.url, didFinishPlaying: {
+		let url = AudioRecordingRepository.getUrlForRecording(filename: audioItem.filename)
+		self.audioPlayer = AudioPlayer(url: url, didFinishPlaying: {
 			self.resetAudioPlayer()
 		})
 		let startedPlayingSuccessful = audioPlayer?.play()

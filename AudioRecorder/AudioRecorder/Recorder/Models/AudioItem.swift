@@ -9,20 +9,20 @@ import Foundation
 
 class AudioItem: Codable {
 	let id: String
-	var url: URL
+	var filename: String
 	var recordingName: String
 	let creationDate: String
 	var inProgress: Bool
 	
-	init(id: String, url: URL, recordingName: String = "My audio recording", creationDate: String, inProgress: Bool = false) {
+	init(id: String, filename: String, recordingName: String = "My audio recording", creationDate: String, inProgress: Bool = false) {
 		self.id = id
-		self.url = url
+		self.filename = filename
 		self.recordingName = recordingName
 		self.creationDate = creationDate
 		self.inProgress = inProgress
 	}
 	
 	static var mock: AudioItem {
-		return AudioItem(id: "ABCDEFGH", url: URL(string: "/users/documents/myaudiofile.m4a")!, creationDate: "\(Date())")
+		return AudioItem(id: "ABCDEFGH", filename: "myaudiofile.m4a", creationDate: "\(Date())")
 	}
 }

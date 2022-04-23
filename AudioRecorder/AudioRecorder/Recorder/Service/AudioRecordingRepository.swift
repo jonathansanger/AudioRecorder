@@ -53,6 +53,14 @@ class AudioRecordingRepository: ObservableObject {
 		self.localDataSource.deleteLocalRecordings()
 	}
 	
+	static func getDocDirectory() -> URL {
+		return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+	}
+	
+	static func getUrlForRecording(filename: String) -> URL {
+		return AudioRecordingRepository.getDocDirectory().appendingPathComponent(filename)
+	}
+	
 	class AudioRecordingLocalDataSource {
 		func loadLocalRecordings() -> [AudioItem]? {
 			// load user defaults, for each, check if url still exists, then addAudio
@@ -65,14 +73,10 @@ class AudioRecordingRepository: ObservableObject {
 				guard let audioDict = audioAny.value as? [String: Any] else {
 					return nil
 				}
-				guard let id = audioDict["id"] as? String, let recordingName = audioDict["recordingName"] as? String, let urlPath = audioDict["url"] as? String, let creationDate = audioDict["creationDate"] as? String else {
+				guard let id = audioDict["id"] as? String, let recordingName = audioDict["recordingName"] as? String, let filename = audioDict["filename"] as? String, let creationDate = audioDict["creationDate"] as? String else {
 					return nil
 				}
-				let url = URL(fileURLWithPath: urlPath)
-				//TODO: currently when the app is rebuilt and launched all the files are seen as non-existent. Perhaps get the Ids, then cycle through documents, see if those ids are there, then update url with that? for some reason it is just not loading them (and so won't play).
-				let fileStillExists = FileManager.default.fileExists(atPath: urlPath)
-				print("fileStillExists: \(fileStillExists), url: \(url)")
-				let audioItem = AudioItem(id: id, url: url, recordingName: recordingName, creationDate: creationDate)
+				let audioItem = AudioItem(id: id, filename: filename, recordingName: recordingName, creationDate: creationDate)
 				audioItems.append(audioItem)
 			}
 			return audioItems
@@ -81,7 +85,7 @@ class AudioRecordingRepository: ObservableObject {
 		func saveRecordings(audioItems: [AudioItem]) {
 			var audioCollectionDict: [String: Any] = [:]
 			for audioItem in audioItems {
-				let itemDict: [String: Any] = ["id": audioItem.id, "url": audioItem.url.path, "recordingName": audioItem.recordingName, "creationDate": audioItem.creationDate]
+				let itemDict: [String: Any] = ["id": audioItem.id, "filename": audioItem.filename, "recordingName": audioItem.recordingName, "creationDate": audioItem.creationDate]
 				audioCollectionDict[audioItem.id] = itemDict
 			}
 			UserDefaults.standard.set(audioCollectionDict, forKey: kAudioItemsArrayKey)
@@ -89,15 +93,13 @@ class AudioRecordingRepository: ObservableObject {
 		
 		func deleteLocalRecordings() {
 			UserDefaults.standard.set([:], forKey: kAudioItemsArrayKey)
-			guard let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-				return
-			}
-			guard let existingFiles = try? FileManager.default.contentsOfDirectory(atPath: path.path) else {
+			let url = AudioRecordingRepository.getDocDirectory()
+			guard let existingFiles = try? FileManager.default.contentsOfDirectory(atPath: url.path) else {
 				return
 			}
 
 			for audioUrlString in existingFiles {
-				let filepath = path.path.appending("/\(audioUrlString)")
+				let filepath = url.path.appending("/\(audioUrlString)")
 				try? FileManager.default.removeItem(atPath: filepath)
 			}
 		}

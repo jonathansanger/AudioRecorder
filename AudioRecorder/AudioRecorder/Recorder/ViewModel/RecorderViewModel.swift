@@ -79,11 +79,9 @@ class RecorderViewModel: ObservableObject {
 		if recordPermission == .granted {
 			let recordingId = UUID().uuidString
 			let fileName = recordingId + ".m4a"
-			let fileManager = FileManager.default
-			let path = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(fileName)
-			let audioItem = AudioItem(id: recordingId, url: path, creationDate: "\(Date())", inProgress: true)
+			let audioItem = AudioItem(id: recordingId, filename: fileName, creationDate: "\(Date())", inProgress: true)
 			self.activeRecording = audioItem
-			self.recorderHelper = RecorderHelper(url: path, onRecordDidFinish: self.onRecordDidFinish)
+			self.recorderHelper = RecorderHelper(url: AudioRecordingRepository.getUrlForRecording(filename: fileName), onRecordDidFinish: self.onRecordDidFinish)
 			guard let avRecorder = self.recorderHelper?.avAudioRecoder else {
 				return
 			}
