@@ -20,9 +20,9 @@ struct NamingModal: View {
 		self.textfieldIsFocused = false
 	}
 	
-	func button(buttonText: String, textColor: Color, action: @escaping () -> Void) -> some View {
+	func button(buttonText: String, textColor: Color, backgroundColor: Color = .clear, action: @escaping () -> Void) -> some View {
 		Button(action: action) {
-			Color.white.frame(maxWidth: .infinity).frame(height: 50)
+			backgroundColor.cornerRadius(32).opacity(0.9).frame(maxWidth: .infinity).frame(height: 50)
 				.overlay(Text(buttonText).foregroundColor(textColor))
 		}
 	}
@@ -39,20 +39,19 @@ struct NamingModal: View {
 			TextField("Enter a title", text: $text)
 				.focused($textfieldIsFocused)
 				.padding()
-				.background(Color.gray.opacity(0.2))
-			HStack {
+				.background(Color.gray.cornerRadius(8).opacity(0.2))
+			VStack {
+				button(buttonText: "Save", textColor: .white, backgroundColor: .blue, action: {
+					self.viewModel.saveNewFileName(id: activeRecording.id, name: text)
+				})
 				button(buttonText: "Discard file", textColor: .red, action: {
 					self.viewModel.shouldRequestFileName = false
 					self.viewModel.deleteFile(id: activeRecording.id)
 				})
-				Color.black.opacity(0.5).frame(width: 2, height: 44)
-				button(buttonText: "Save", textColor: .black, action: {
-					self.viewModel.saveNewFileName(id: activeRecording.id, name: text)
-				})
-			}
+			}.padding(.horizontal, 20)
 		}
 		.padding()
-		.background(Color.white.frame(maxWidth: .infinity))
+		.background(Color.white.cornerRadius(16).frame(maxWidth: .infinity))
 		.onAppear() {
 			self.textfieldIsFocused = true
 		}
