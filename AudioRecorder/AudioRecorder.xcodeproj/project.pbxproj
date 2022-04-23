@@ -23,6 +23,7 @@
 		ECD183FA281350DB004C5F19 /* AudioCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD183F9281350DB004C5F19 /* AudioCollection.swift */; };
 		ECD18400281352C2004C5F19 /* AudioItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD183FF281352C2004C5F19 /* AudioItem.swift */; };
 		ECD1840228135C20004C5F19 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD1840128135C20004C5F19 /* AudioPlayer.swift */; };
+		ECD18404281386A5004C5F19 /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD18403281386A5004C5F19 /* AlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		ECD183F9281350DB004C5F19 /* AudioCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCollection.swift; sourceTree = "<group>"; };
 		ECD183FF281352C2004C5F19 /* AudioItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioItem.swift; sourceTree = "<group>"; };
 		ECD1840128135C20004C5F19 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		ECD18403281386A5004C5F19 /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				EC7A601328110EDF00267AE9 /* RecorderHelper.swift */,
+				ECD18403281386A5004C5F19 /* AlertController.swift */,
 				ECD1840128135C20004C5F19 /* AudioPlayer.swift */,
 			);
 			path = Service;
@@ -328,6 +331,7 @@
 				EC7A60102811094700267AE9 /* RecorderViewModel.swift in Sources */,
 				ECD1840228135C20004C5F19 /* AudioPlayer.swift in Sources */,
 				EC6880462811E4C0009746B9 /* AudioItemView.swift in Sources */,
+				ECD18404281386A5004C5F19 /* AlertController.swift in Sources */,
 				EC7A601428110EDF00267AE9 /* RecorderHelper.swift in Sources */,
 				EC7A60182811C33000267AE9 /* RecordView.swift in Sources */,
 				EC7A5FE7281108C000267AE9 /* ContentView.swift in Sources */,

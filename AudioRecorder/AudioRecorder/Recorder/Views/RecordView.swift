@@ -7,15 +7,17 @@
 
 import SwiftUI
 
-
-
 struct RecordView: View {
 	@ObservedObject var viewModel: RecorderViewModel
 	@ObservedObject var audioCollection: AudioCollection
-	
+	@ObservedObject var alertController: AlertController
+	@State var showAlert: Bool
+
 	init(viewModel: RecorderViewModel) {
 		self.viewModel = viewModel
 		self.audioCollection = viewModel.audioCollection
+		self.alertController = AlertController.shared
+		self._showAlert = State(initialValue: false)
 	}
 	
 	var body: some View {
@@ -23,32 +25,33 @@ struct RecordView: View {
 		return ZStack {
 			VStack {
 				//Audio items list
-				ScrollView {
+				if audioCollection.audioItems.isEmpty {
+					Spacer()
 					VStack {
-						Text(viewModel.isRecording ? "Recording" : "Not recording")
-						Button(action: {
-							viewModel.loadPreviousURLs()
-						}) {
-							Text("load previous files")
+						HStack {
+							Text("Press and hold the button below to record your first audio clip!").fixedSize(horizontal: false, vertical: true).padding(.horizontal, 32)
 						}
-						Button(action: {
-							viewModel.deleteAllLocalURLs()
-							self.viewModel.audioCollection.audioItems.removeAll()
-						}) {
-							Text("Remove all urls and files")
-						}
-						.padding(.bottom, 32)
-						ForEach(audioCollection.audioItems, id: \.id) { audioItem in
-							AudioItemView(audioItem: audioItem, deleteFile: { id in
-								self.viewModel.deleteFile(id: id)
-							})
-						}
+						.padding(.bottom, 20)
+						Image(systemName: "arrow.down").resizable().scaledToFit().frame(width: 40)
+					}
+					Spacer()
+					
+				}
+				else {
+					ScrollView {
+						VStack {
+							ForEach(audioCollection.audioItems, id: \.id) { audioItem in
+								AudioItemView(audioItem: audioItem, deleteFile: { id in
+									viewModel.deleteFile(id: id)
+								}).padding(.horizontal, 20)
+							}
+						}.frame(maxWidth: .infinity)
+						Spacer()
 					}
 				}
 				
 				//Record
 				VStack {
-					Spacer()
 					RecordButton(viewModel: viewModel)
 						.disabled(viewModel.shouldRequestFileName)
 				}
@@ -58,13 +61,18 @@ struct RecordView: View {
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		
-		//File naming modal
 		.overlay(VStack {
+			//File naming modal
 			if viewModel.shouldRequestFileName, let activeRecording = viewModel.activeRecording {
 				NamingModal(viewModel: viewModel, activeRecording: activeRecording)
 			}
 		})
-		
+		.alert(isPresented: $alertController.showAlert) { () -> Alert in
+			if let secondaryButton = alertController.secondaryButton {
+				return Alert(title: Text(alertController.title), message: Text(alertController.message), primaryButton: alertController.primaryButton, secondaryButton: secondaryButton)
+			}
+			return Alert(title: Text(alertController.title), message: Text(alertController.message), dismissButton: alertController.primaryButton)
+		}
 	}
 }
 

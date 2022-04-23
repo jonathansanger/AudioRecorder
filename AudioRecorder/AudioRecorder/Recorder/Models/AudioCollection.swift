@@ -8,18 +8,19 @@
 import Foundation
 
 class AudioCollection: ObservableObject {
-	@Published var audioItems: [AudioItem]
+	@Published private(set) var audioItems: [AudioItem]
 	
 	init(_ audioItems: [AudioItem] = []) {
 		self.audioItems = audioItems
 	}
 	
-	func addAudio(_ audioItem: AudioItem) {
+	func addAudioItem(_ audioItem: AudioItem) {
 		//only add if it doesn't already exist
 		guard !self.audioItems.contains(where: {$0.id == audioItem.id}) else {
 			return
 		}
 		self.audioItems.append(audioItem)
+		self.audioItems.sort(by: {$0.creationDate < $1.creationDate})
 	}
 	
 	func updateAudioName(id: String, fileName: String) {
@@ -27,6 +28,20 @@ class AudioCollection: ObservableObject {
 			return
 		}
 		audioItem.recordingName = fileName
+	}
+	
+	func updateInProgress(_ inProgress: Bool, id: String?) {
+		if let audioItem = self.audioItems.first(where: {$0.id == id}) {
+			audioItem.inProgress = inProgress
+		}
+	}
+	
+	func deleteAudio(id: String) {
+		self.audioItems.removeAll(where: {$0.id == id})
+	}
+	
+	func deleteAll() {
+		self.audioItems.removeAll()
 	}
 }
 

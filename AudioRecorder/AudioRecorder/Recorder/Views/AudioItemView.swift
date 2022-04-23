@@ -37,7 +37,10 @@ struct AudioItemView: View {
 				print(error)
 			}
 		}
-
+	}
+	
+	var shouldShowPlayButton: Bool {
+		return !audioItem.inProgress
 	}
 	
 	var body: some View {
@@ -52,8 +55,14 @@ struct AudioItemView: View {
 					.foregroundColor(.blue)
 			}
 			.buttonStyle(PlainButtonStyle())
+			.opacity(shouldShowPlayButton ? 1 : 0)
 			
-			Text(audioItem.recordingName)
+			if audioItem.inProgress {
+				Text("Recording in progress...").italic()
+			}
+			else {
+				Text(audioItem.recordingName)
+			}
 			
 			Spacer()
 			Button(action: {
@@ -71,7 +80,7 @@ struct AudioItemView: View {
 }
 
 struct AudioItemView_Previews: PreviewProvider {
-    static var previews: some View {
+	static var previews: some View {
 		AudioItemView(audioItem: AudioItem.mock, deleteFile: {_ in})
-    }
+	}
 }

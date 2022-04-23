@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NamingModal: View {
 	@State var text: String = ""
+	@FocusState var textfieldIsFocused: Bool
 	var viewModel: RecorderViewModel
 	let activeRecording: AudioItem
 	
@@ -16,6 +17,7 @@ struct NamingModal: View {
 		self.viewModel = viewModel
 		self.activeRecording = activeRecording
 		self._text = State(initialValue: activeRecording.recordingName)
+		self.textfieldIsFocused = false
 	}
 	
 	func button(buttonText: String, textColor: Color, action: @escaping () -> Void) -> some View {
@@ -35,6 +37,7 @@ struct NamingModal: View {
 				Spacer()
 			}
 			TextField("Enter a title", text: $text)
+				.focused($textfieldIsFocused)
 				.padding()
 				.background(Color.gray.opacity(0.2))
 			HStack {
@@ -50,6 +53,9 @@ struct NamingModal: View {
 		}
 		.padding()
 		.background(Color.white.frame(maxWidth: .infinity))
+		.onAppear() {
+			self.textfieldIsFocused = true
+		}
 	}
 }
 
