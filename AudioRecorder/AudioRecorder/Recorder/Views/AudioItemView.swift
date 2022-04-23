@@ -6,36 +6,20 @@
 //
 
 import SwiftUI
-import AVFAudio
 
 struct AudioItemView: View {
 	var audioItem: AudioItem
 	var deleteFile: (String) -> Void
-	
-	@State var audioPlayer: AudioPlayer?
-	@State var isPlaying: Bool = false
+	var startPlaying: () -> Void
+	var stopPlaying: () -> Void
+	var isPlaying: Bool
 	
 	func togglePlayback() {
-		//Stop if playing
-		if let audioPlayer = audioPlayer, audioPlayer.isPlaying {
-			audioPlayer.stop()
-			self.isPlaying = false
+		if isPlaying {
+			self.stopPlaying()
 		}
 		else {
-			//play file
-			let url = audioItem.url
-			do {
-				let audioSession = AVAudioSession()
-				try audioSession.setCategory(.playback)
-				try audioSession.setActive(true)
-				self.audioPlayer = AudioPlayer(url: url, didFinishPlaying: {
-					self.isPlaying = false
-				})
-				self.isPlaying = audioPlayer?.play() ?? false
-			}
-			catch {
-				print(error)
-			}
+			self.startPlaying()
 		}
 	}
 	
@@ -81,6 +65,6 @@ struct AudioItemView: View {
 
 struct AudioItemView_Previews: PreviewProvider {
 	static var previews: some View {
-		AudioItemView(audioItem: AudioItem.mock, deleteFile: {_ in})
+		AudioItemView(audioItem: AudioItem.mock, deleteFile: {_ in}, startPlaying: {}, stopPlaying: {}, isPlaying: false)
 	}
 }

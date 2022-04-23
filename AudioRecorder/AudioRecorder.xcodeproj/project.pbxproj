@@ -60,7 +60,7 @@
 		EC7A601128110AD300267AE9 /* RecordButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		EC7A601328110EDF00267AE9 /* RecorderHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderHelper.swift; sourceTree = "<group>"; };
 		EC7A60152811C0B200267AE9 /* NamingModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamingModal.swift; sourceTree = "<group>"; };
-		EC7A60172811C33000267AE9 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.simpleColoring; };
+		EC7A60172811C33000267AE9 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		ECD183F9281350DB004C5F19 /* AudioCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCollection.swift; sourceTree = "<group>"; };
 		ECD183FF281352C2004C5F19 /* AudioItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioItem.swift; sourceTree = "<group>"; };
 		ECD1840128135C20004C5F19 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };

@@ -6,16 +6,49 @@
 //
 
 import SwiftUI
+import AVFAudio
 
 struct RecordView: View {
 	@ObservedObject var viewModel: RecorderViewModel
 	@ObservedObject var alertController: AlertController
 	@State var showAlert: Bool
-
+	@State var audioPlayer: AudioPlayer?
+	@State var activeAudioId: String?
+	
 	init(viewModel: RecorderViewModel) {
 		self.viewModel = viewModel
 		self.alertController = AlertController.shared
 		self._showAlert = State(initialValue: false)
+	}
+	
+	func resetAudioPlayer() {
+		audioPlayer = nil
+		activeAudioId = nil
+	}
+	
+	func startPlayingAudio(_ audioItem: AudioItem) {
+		resetAudioPlayer()
+		let audioSession = AVAudioSession()
+		try? audioSession.setCategory(.playback)
+		try? audioSession.setActive(true)
+		self.activeAudioId = audioItem.id
+		self.audioPlayer = AudioPlayer(url: audioItem.url, didFinishPlaying: {
+			self.resetAudioPlayer()
+		})
+		let startedPlayingSuccessful = audioPlayer?.play()
+		guard let startedPlayingSuccessful = startedPlayingSuccessful, startedPlayingSuccessful else {
+			//If playback didn't start, reset the player
+			self.resetAudioPlayer()
+			return
+		}
+	}
+	
+	func stopPlayingAudio(_ audioItem: AudioItem) {
+		guard audioItem.id == activeAudioId else {
+			return
+		}
+		audioPlayer?.stop()
+		resetAudioPlayer()
 	}
 	
 	var body: some View {
@@ -33,15 +66,17 @@ struct RecordView: View {
 						Image(systemName: "arrow.down").resizable().scaledToFit().frame(width: 40)
 					}
 					Spacer()
-					
 				}
 				else {
 					ScrollView {
 						VStack {
 							ForEach(viewModel.recordingListToDisplay, id: \.id) { audioItem in
-								AudioItemView(audioItem: audioItem, deleteFile: { id in
-									viewModel.deleteFile(id: id)
-								}).padding(.horizontal, 20)
+								AudioItemView(audioItem: audioItem,
+											  deleteFile: { id in viewModel.deleteFile(id: id)},
+											  startPlaying: { startPlayingAudio(audioItem)},
+											  stopPlaying: { stopPlayingAudio(audioItem)},
+											  isPlaying: audioItem.id == activeAudioId
+								).padding(.horizontal, 20)
 							}
 						}.frame(maxWidth: .infinity)
 						Spacer()
