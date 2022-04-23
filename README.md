@@ -6,3 +6,4 @@ All of the data handling is located in AudioRecordingRepository, which handles l
 
 In a production app, I would store the audioItems array in a local database, perhaps Apple's CoreData, or a SQLlite db. And if the audio files were all stored in a backend, the logic in the AudioRecordingRepository could be updated to reflect that, and would give appropriate urls to the views for playback.
 
+*Note: Minimum requirements of iOS 15.0 to install and run this app. Several features take advantage of the latest iOS version (@FocusState, @App structure), but there are plenty of ways to handle this with a minimum version of iOS 14.0
