@@ -42,11 +42,12 @@ struct NamingModal: View {
 				.background(Color.gray.cornerRadius(8).opacity(0.2))
 			VStack {
 				button(buttonText: "Save", textColor: .white, backgroundColor: .blue, action: {
-					self.viewModel.saveNewFileName(id: activeRecording.id, name: text)
+					self.viewModel.saveNewRecording(id: activeRecording.id, name: text)
 				})
 				button(buttonText: "Discard file", textColor: .red, action: {
 					self.viewModel.shouldRequestFileName = false
 					self.viewModel.deleteFile(id: activeRecording.id)
+					self.viewModel.activeRecording = nil
 				})
 			}.padding(.horizontal, 20)
 		}

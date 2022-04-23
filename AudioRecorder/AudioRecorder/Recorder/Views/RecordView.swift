@@ -9,13 +9,11 @@ import SwiftUI
 
 struct RecordView: View {
 	@ObservedObject var viewModel: RecorderViewModel
-	@ObservedObject var audioCollection: AudioCollection
 	@ObservedObject var alertController: AlertController
 	@State var showAlert: Bool
 
 	init(viewModel: RecorderViewModel) {
 		self.viewModel = viewModel
-		self.audioCollection = viewModel.audioCollection
 		self.alertController = AlertController.shared
 		self._showAlert = State(initialValue: false)
 	}
@@ -25,7 +23,7 @@ struct RecordView: View {
 		return ZStack {
 			VStack {
 				//Audio items list
-				if audioCollection.audioItems.isEmpty {
+				if viewModel.recordingListToDisplay.isEmpty {
 					Spacer()
 					VStack {
 						HStack {
@@ -40,7 +38,7 @@ struct RecordView: View {
 				else {
 					ScrollView {
 						VStack {
-							ForEach(audioCollection.audioItems, id: \.id) { audioItem in
+							ForEach(viewModel.recordingListToDisplay, id: \.id) { audioItem in
 								AudioItemView(audioItem: audioItem, deleteFile: { id in
 									viewModel.deleteFile(id: id)
 								}).padding(.horizontal, 20)

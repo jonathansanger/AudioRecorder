@@ -36,6 +36,11 @@ class AudioCollection: ObservableObject {
 		}
 	}
 	
+	func replaceExistingWith(_ audioItems: [AudioItem]) {
+		self.audioItems = audioItems
+		self.audioItems.sort(by: {$0.creationDate < $1.creationDate})
+	}
+	
 	func deleteAudio(id: String) {
 		self.audioItems.removeAll(where: {$0.id == id})
 	}
